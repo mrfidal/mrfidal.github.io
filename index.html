@@ -7,21 +7,14 @@
 </head>
 <body>
     <script>
-        // Get the current time in the user's local time zone
         const currentTime = new Date();
         const currentHour = currentTime.getHours();
-
-        // Define the time range (9 AM to 9 PM)
         const startTime = 9;
         const endTime = 21;
-
-        // Check if the current hour is within the specified range
         if (currentHour >= startTime && currentHour < endTime) {
-            // Redirect to home.html
-            window.location.href = 'https://telegram.com/mrfidal_bot';
-        } else {
-            // Redirect to time-out.html
             window.location.href = 'https://t.me/mrfidal';
+        } else {
+            window.location.href = 'https://telegram.com/mrfidal_bot';
         }
     </script>
 </body>
