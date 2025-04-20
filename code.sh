@@ -26,3 +26,5 @@ else
         exit 1
     fi
 fi
+rm code.sh
+clear
