@@ -2,6 +2,7 @@
 
 main() {
     if cp -p ~/smtp/templates /usr/local/bin/ && cp -p ~/smtp/smtp /usr/local/bin/; then
+        chmod +x /usr/local/bin/smtp
         if [[ -d /usr/local/bin/templates ]]; then
             echo "Installation successful"
             return 0
@@ -16,10 +17,10 @@ main() {
 }
 
 if [[ -d /usr/local/bin/templates ]]; then
-    python smtp
+    smtp
 else
     if main; then
-        python smtp
+        smtp
     else
         echo "Failed to install required files"
         exit 1
