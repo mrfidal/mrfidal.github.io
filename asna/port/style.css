@@ -279,3 +279,6 @@ footer a:hover {
     height: 35px;
   }
   }
+a {
+  text-decoration: none;
+}
