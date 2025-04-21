@@ -1,0 +1,281 @@
+/*
+# © 2025 Fidal. All rights reserved.
+#
+# This software and associated documentation files (the "Code") are the intellectual property of the author.
+# Permission is not granted to use, copy, modify, merge, publish, distribute, sublicense, or sell
+# copies of the Code without explicit written permission from the author.
+#
+# The Code is provided "as is", without warranty of any kind, express or implied, including but not limited to
+# the warranties of merchantability, fitness for a particular purpose, and noninfringement. In no event shall the
+# author be liable for any claim, damages, or other liability arising from the use of the Code.
+#
+# For licensing or collaboration inquiries, please contact: mrfidal@proton.me
+*/
+:root {
+  --primary: #6c5ce7;
+  --primary-light: #a29bfe;
+  --dark-bg: #1e272e;
+  --card-bg: #2d3436;
+  --text-light: #f5f6fa;
+  --text-gray: #dfe6e9;
+  --accent: #00cec9;
+  --shadow-color: rgba(0, 0, 0, 0.2);
+}
+
+.bw-theme {
+  --primary: #333;
+  --primary-light: #666;
+  --dark-bg: #f5f5f5;
+  --card-bg: #fff;
+  --text-light: #222;
+  --text-gray: #555;
+  --accent: #888;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s, color 0.2s;
+}
+
+body {
+  background-color: var(--dark-bg);
+  color: var(--text-light);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: var(--card-bg);
+  border: 1px solid var(--text-gray);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 100;
+  box-shadow: 0 2px 5px var(--shadow-color);
+}
+
+.theme-toggle i {
+  color: var(--text-light);
+  font-size: 1.2rem;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  flex: 1;
+}
+
+h1 {
+  text-align: center;
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  margin: 0 auto 3rem;
+  font-weight: 600;
+  position: relative;
+  color: var(--text-light);
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #00cec9, #00a8ff);
+  border-radius: 2px;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.project-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 4px 20px var(--shadow-color);
+  position: relative;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px var(--shadow-color);
+}
+
+.project-image-container {
+  height: 180px;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  filter: brightness(var(--img-brightness, 1));
+}
+
+.bw-theme .project-image {
+  filter: grayscale(100%) contrast(110%) brightness(0.9);
+}
+
+.project-card:hover .project-image {
+  transform: scale(1.05);
+}
+
+.project-content {
+  padding: 1.5rem;
+}
+
+.project-title {
+  font-size: 1.3rem;
+  margin-bottom: 0.7rem;
+  color: var(--text-light);
+  font-weight: 600;
+}
+
+.project-description {
+  color: var(--text-gray);
+  margin-bottom: 1.3rem;
+  font-size: 0.9rem;
+}
+
+.project-links {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.project-link {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+}
+
+.bw-theme .project-link {
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--text-light);
+}
+
+.project-link:hover {
+  transform: translateY(-3px);
+  background: var(--primary);
+}
+
+.error-fallback {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--card-bg), var(--dark-bg));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-gray);
+}
+
+.error-fallback i {
+  font-size: 1.8rem;
+  margin-bottom: 0.8rem;
+  color: var(--accent);
+}
+
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  margin-top: auto;
+  color: var(--text-gray);
+  font-size: 0.85rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: var(--primary-light);
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1.5rem;
+  }
+  h1 {
+    margin-bottom: 2.5rem;
+  }
+  h1::after {
+    width: 60px;
+    bottom: -10px;
+  }
+  .projects-grid {
+    gap: 1.5rem;
+  }
+  .project-image-container {
+    height: 160px;
+  }
+  .project-content {
+    padding: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem;
+  }
+  h1 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+  }
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+  .project-card {
+    max-width: 100%;
+  }
+  footer {
+    padding: 1rem;
+    font-size: 0.8rem;
+  }
+  .theme-toggle {
+    top: 10px;
+    right: 10px;
+    width: 35px;
+    height: 35px;
+  }
+  }
