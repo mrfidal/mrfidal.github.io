@@ -81,7 +81,7 @@ const statsObserver = new IntersectionObserver((entries) => {
         if (entry.isIntersecting) {
             animateValue('projectsCompleted', 0, 150, 2000);
             animateValue('happyClients', 0, 50, 2000);
-            animateValue('yearsExperience', 0, 12, 2000);
+            animateValue('yearsExperience', 0, 2, 2000);
             animateValue('systemsInstalled', 0, 200, 2000);
             statsObserver.unobserve(entry.target);
         }
